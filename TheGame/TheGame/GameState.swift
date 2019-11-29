@@ -1,5 +1,5 @@
 //
-//  main.swift
+//  GameState.swift
 //  TheGame
 //
 //  Created by harold aholoukpe on 29/11/2019.
@@ -8,5 +8,9 @@
 
 import Foundation
 
-
+enum GameState {
+    case NewGame
+    case InGame
+    case EndGame
+}
 
