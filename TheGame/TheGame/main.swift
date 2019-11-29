@@ -8,5 +8,19 @@
 
 import Foundation
 
+var state: GameState = .NewGame
+print("Entrez votre prenom")
+
+if state == .NewGame {
+    let prenom = readLine()!
+    print("Bonjour \(prenom) \n bienvenue sur le jeu Pokémon")
+}
+
+
+
+
+
+
+
 
 
