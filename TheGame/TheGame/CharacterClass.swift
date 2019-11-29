@@ -20,3 +20,10 @@ class Character {
         self.weapon = weapon
     }
 }
+
+var pikachu = Character(name: "Pikachu", weapon: armeUn)
+var roucool = Character(name: "Roucool", weapon: armeDeux)
+var magicarpe = Character(name: "Magicarpe", weapon: armeTrois)
+var reptincel = Character(name: "Reptincel", weapon: armeQuatre)
+var abra = Character(name: "Abra", weapon: armeCinq)
+var ronflex = Character(name: "Ronflex", weapon: armeSix)
