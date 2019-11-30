@@ -13,4 +13,3 @@ enum GameState {
     case InGame
     case EndGame
 }
-
