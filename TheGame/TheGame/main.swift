@@ -28,8 +28,7 @@ func createTeam(joueur: Player) {
     for choice in 1...3 {
         print("Choisissez les pokémons de votre équipe (encore \(4 - choice))")
         let pokemon = readLine()!
-        //choixPokemon(pokemon: pokemon)
-        monJoueurUn.choixPokemon(pokemon: pokemon)
+        joueur.choixPokemon(pokemon: pokemon)
         
     }
     print(separateur)
@@ -69,8 +68,8 @@ func debutPartie() {
 
 func milieuPartie() {
     print(separateur2)
-    print(monJoueurUn.team.count)
-    print(monJoueurDeux.team.count)
+    print("Il y a \(monJoueurUn.team.count) pokemons dans l'equipe de \(monJoueurUn.name)")
+    print("Il y a \(monJoueurDeux.team.count) pokemons dans l'equipe de \(monJoueurDeux.name)")
     
     
 }
