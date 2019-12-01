@@ -27,3 +27,9 @@ var magicarpe = Character(name: "Magicarpe", weapon: armeTrois)
 var reptincel = Character(name: "Reptincel", weapon: armeQuatre)
 var abra = Character(name: "Abra", weapon: armeCinq)
 var ronflex = Character(name: "Ronflex", weapon: armeSix)
+
+
+enum TheCharacters {
+    case pikachu, roucool, magicarpe, reptincel, abra, ronflex
+    
+}
