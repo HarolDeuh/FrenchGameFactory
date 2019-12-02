@@ -11,7 +11,7 @@ import Foundation
 
 class Character {
     var name: String
-    var vie: Int = 100
+    var vie: Int = 10
     var weapon: Weapon
     
     

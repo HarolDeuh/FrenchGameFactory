@@ -22,9 +22,10 @@ class Weapon {
 // Je crée les armes
 let monRandom = Int.random(in: 0 ..< 40)
 
-let armeUn = Weapon(name: "Arme 1", attaque: monRandom)
-let armeDeux = Weapon(name: "Arme 2", attaque: monRandom)
-let armeTrois = Weapon(name: "Arme 3", attaque: monRandom)
-let armeQuatre = Weapon(name: "Arme 4", attaque: monRandom)
-let armeCinq = Weapon(name: "Arme 5", attaque: monRandom)
-let armeSix = Weapon(name: "Arme 6", attaque: monRandom)
+
+let armeUn = Weapon(name: "Arme 1", attaque: Int.random(in: 0 ..< 40))
+let armeDeux = Weapon(name: "Arme 2", attaque: Int.random(in: 0 ..< 40))
+let armeTrois = Weapon(name: "Arme 3", attaque: Int.random(in: 0 ..< 40))
+let armeQuatre = Weapon(name: "Arme 4", attaque: Int.random(in: 0 ..< 40))
+let armeCinq = Weapon(name: "Arme 5", attaque: Int.random(in: 0 ..< 40))
+let armeSix = Weapon(name: "Arme 6", attaque: Int.random(in: 0 ..< 40))

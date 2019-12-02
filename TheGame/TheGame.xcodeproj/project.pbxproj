@@ -12,6 +12,7 @@
 		54CD01172391CCC7007A27B6 /* PlayerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD01162391CCC7007A27B6 /* PlayerClass.swift */; };
 		54CD01192391CD02007A27B6 /* CharacterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD01182391CD02007A27B6 /* CharacterClass.swift */; };
 		54CD011B2391CD1B007A27B6 /* WeaponClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD011A2391CD1B007A27B6 /* WeaponClass.swift */; };
+		54D0B44E2395532C008B0DF7 /* GameMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D0B44D2395532C008B0DF7 /* GameMethods.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +34,7 @@
 		54CD01162391CCC7007A27B6 /* PlayerClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerClass.swift; sourceTree = "<group>"; };
 		54CD01182391CD02007A27B6 /* CharacterClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterClass.swift; sourceTree = "<group>"; };
 		54CD011A2391CD1B007A27B6 /* WeaponClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponClass.swift; sourceTree = "<group>"; };
+		54D0B44D2395532C008B0DF7 /* GameMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMethods.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 			children = (
 				54CD010D2391CA53007A27B6 /* main.swift */,
 				54CD01142391CC85007A27B6 /* GameState.swift */,
+				54D0B44D2395532C008B0DF7 /* GameMethods.swift */,
 				54CD01162391CCC7007A27B6 /* PlayerClass.swift */,
 				54CD011A2391CD1B007A27B6 /* WeaponClass.swift */,
 				54CD01182391CD02007A27B6 /* CharacterClass.swift */,
@@ -132,6 +135,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54D0B44E2395532C008B0DF7 /* GameMethods.swift in Sources */,
 				54CD01172391CCC7007A27B6 /* PlayerClass.swift in Sources */,
 				54CD011B2391CD1B007A27B6 /* WeaponClass.swift in Sources */,
 				54CD010E2391CA53007A27B6 /* main.swift in Sources */,

@@ -21,41 +21,6 @@ let monJoueurUn = Player(name: prenomUn)
 let monJoueurDeux = Player(name: prenomDeux)
 
 
-// Methode qui permet de créer les équipes des joueurs. 3 Pokémons par joueur
-func createTeam(joueur: Player) {
-    print("\(joueur.name), À votre tour")
-    
-    for choice in 1...3 {
-        print("Choisissez les pokémons de votre équipe (encore \(4 - choice))")
-        let pokemon = readLine()!
-        joueur.choixPokemon(pokemon: pokemon)
-        
-    }
-    print(separateur)
-}
-
-//Methode pour attaquer
-func attaque(joueur: Player, attaquant: Character, defense: Character) {
-    defense.vie = defense.vie -  attaquant.weapon.attaque
-    print(defense.vie)
-}
-
-func soin(joueur: Player, pokemon: Character) {
-    // Je veux soigner mon pokemon
-    print("Vous avez dans votre équipe \(joueur.team.count) pokemons")
-    print("Choisissez le pokémon que vous souhaitez soigner (1, 2 ou 3)")
-    print("Dans votre equipe il y a")
-    
-    for (index, pokemon) in joueur.team.enumerated() {
-        print(" \(index + 1) \(pokemon.name): \(pokemon.vie) PV")
-    }
-    
-    let pokemonSoin = Int(readLine()!)!
-    
-    joueur.team[pokemonSoin - 1].vie += 30
-    print("Votre pokemon \(joueur.team[pokemonSoin - 1].name) a maintenant \(joueur.team[pokemonSoin - 1].vie) PV")
-}
-
 
 // MARK: variables texte console
 var separateur = "------------------------------"
@@ -64,9 +29,8 @@ var separateur2 = "=============================="
 
 
 
-// MARK: On lance la partie
+// MARK: Début de partie
 // On initialise le nouveau jeu
-
 
 
 func debutPartie() {
@@ -77,30 +41,46 @@ func debutPartie() {
     createTeam(joueur: monJoueurUn)
     createTeam(joueur: monJoueurDeux)
     
+    print("Il y a \(monJoueurUn.team.count) pokemons dans l'equipe de \(monJoueurUn.name)")
+    print("Il y a \(monJoueurDeux.team.count) pokemons dans l'equipe de \(monJoueurDeux.name)")
+    
+    print(separateur2)
+    print(separateur2)
+    
     milieuPartie()
 }
-    
+
+// MARK: Milieu de partie
 
 func milieuPartie() {
-    print(separateur2)
-    //print("Il y a \(monJoueurUn.team.count) pokemons dans l'equipe de \(monJoueurUn.name)")
-    //print("Il y a \(monJoueurDeux.team.count) pokemons dans l'equipe de \(monJoueurDeux.name)")
-    var harold = Player(name: "harold")
-    var senan = Player(name: "senan")
     
+    
+    let harold = Player(name: "harold")
+    let senan = Player(name: "senan")
     harold.team = [pikachu, roucool, abra]
     senan.team = [magicarpe, ronflex, reptincel]
     
-    soin(joueur: harold, pokemon: harold.team[0])
+    //leTour()
     
+    while monJoueurUn.team.isEmpty != true || monJoueurDeux.team.isEmpty != true {
+        leTour()
+    }
+    
+    if monJoueurUn.team.isEmpty {
+        print("\(monJoueurUn.name) tu n'as plus de pokemons disponible, tu as perdus")
+    } else if monJoueurDeux.team.isEmpty {
+        print("\(monJoueurDeux.name) tu n'as plus de pokemons disponible, tu as perdus")
+    }
     
 }
+
+// MARK: Fin de partie
 
 func finPartie() {
     print("Fin de match")
 }
 
-var state: GameState = .InGame
+var state: GameState = .NewGame
 switch state {
     
 case .NewGame:
