@@ -12,6 +12,7 @@ class Game {
     var state: GameState = .NewGame
     var joueur1: Player?
     var joueur2: Player?
+    var nbrTour: Int = 1
     
     func debutPartie(joueur1: Player, joueur2: Player) {
         print("Joueur 1: \(monJoueurUn.name)")
@@ -33,12 +34,10 @@ class Game {
     
     func milieuPartie(joueur1: Player, joueur2: Player) {
         // code
-//        while !monJoueurUn.isDead() && !monJoueurDeux.isDead() {
-//            leTour(leTableau: tableauJoueur)
-//        }
         
         while !joueur1.isDead() && !joueur2.isDead() {
             leTour(leTableau: tableauJoueur)
+            nbrTour += 1
         }
     }
     
@@ -46,17 +45,8 @@ class Game {
         // code
         print(separateur2)
         print("F I N   D E   P A R T I E")
+        print(nbrTour)
         print(separateur2)
     }
     
-//    func checkState() {
-//        switch state {
-//        case .NewGame:
-//            TheGame.debutPartie()
-//        case .InGame:
-//            TheGame.milieuPartie()
-//        case .EndGame:
-//            TheGame.finPartie()
-//        }
-//    }
 }
