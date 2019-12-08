@@ -37,4 +37,8 @@ class Player {
         
         return pokemon
     }
+    
+    func isDead() -> Bool {
+        return self.team.count == 0 
+    }
 }

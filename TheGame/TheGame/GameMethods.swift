@@ -12,7 +12,7 @@ import Foundation
 func createTeam(joueur: Player) {
     print("\(joueur.name), À votre tour")
     
-    for choice in 1...3 {
+    for choice in 1...1 {
         print("Choisissez les pokémons de votre équipe (encore \(4 - choice))")
         let pokemon = readLine()!
         joueur.choixPokemon(pokemon: pokemon)
@@ -20,6 +20,9 @@ func createTeam(joueur: Player) {
     }
     print(separateur)
 }
+
+
+
 
 //Methode pour attaquer
 func attaque(joueur1: Player, joueur2:Player) {
@@ -29,6 +32,7 @@ func attaque(joueur1: Player, joueur2:Player) {
     for (index, pokemon) in joueur1.team.enumerated() {
         print(" \(index + 1) \(pokemon.name): \(pokemon.weapon.attaque) ATT")
     }
+    
     let pokemonBonus = Int(readLine(strippingNewline: true)!)!
     
     print("Choisis le pokémon que tu souhaites attaquer (1, 2, 3)")
@@ -48,8 +52,13 @@ func attaque(joueur1: Player, joueur2:Player) {
     
     if joueur2.team[pokemonMalus - 1].vie < 0 {
         print("\(joueur2.team[pokemonMalus - 1].name) est battu ! Il n'est plus disponible")
+        
         joueur2.team.remove(at: pokemonMalus - 1)
         print("\(joueur2.name), il te reste \(joueur2.team.count) pokémons dispo")
+        
+        if joueur2.team.isEmpty {
+            print("\(joueur2.name) tu n'as plus de pokemons disponible, tu as perdus")
+        }
     }
 }
 
@@ -73,30 +82,54 @@ func soin(joueur: Player) {
 
 
 // Methode pour organiser les tours
-func leTour() {
-    let leTableau = [monJoueurUn, monJoueurDeux].shuffled()
-    print("\(leTableau[0].name), c'est toi qui commence, que souhaites-tu faire ?")
-    print("(1) Soigner un membre de ton équipe ou alors (2) attaquer un pokémon de \(leTableau[1].name) ?")
+func leTour(leTableau: [Player]) {
     
-    queFaire(joueur1: leTableau[0], joueur2: leTableau[1])
+    if leTableau[0].isDead() {
+        print("Tu t'es bien battu")
+        //finPartie()
+        newPartie.finPartie(joueur1: leTableau[0], joueur2: leTableau[1])
+        
+    } else {
+        print("\(leTableau[0].name), c'est toi qui commence, que souhaites-tu faire ?")
+        print("(1) Soigner un membre de ton équipe ou alors (2) attaquer un pokémon de \(leTableau[1].name) ?")
+        
+        queFaire(joueur1: leTableau[0], joueur2: leTableau[1])
+    }
     
-    print("\(leTableau[1].name), à ton tour, que souhaites-tu faire ?")
-    print("(1) Soigner un membre de ton équipe ou alors (2) attaquer un pokémon de \(leTableau[0].name) ?")
+    if leTableau[1].team.isEmpty {
+        print("Tu t'es bien battu")
+        
+    } else {
+        print("\(leTableau[1].name), à ton tour, que souhaites-tu faire ?")
+        print("(1) Soigner un membre de ton équipe ou alors (2) attaquer un pokémon de \(leTableau[0].name) ?")
+        queFaire(joueur1: leTableau[1], joueur2: leTableau[0])
+    }
     
-    queFaire(joueur1: leTableau[1], joueur2: leTableau[0])
 }
+
+
+
 
 // Methode pour choisir l'action
 func queFaire(joueur1: Player, joueur2: Player) {
     let choix = Int(readLine()!)!
     
-    switch choix {
-    case 1:
-        soin(joueur: joueur1)
-    case 2:
-        attaque(joueur1: joueur1, joueur2: joueur2)
-    default:
-        print(" ")
+    if joueur1.team.isEmpty || joueur2.team.isEmpty {
+        //finPartie()
+        newPartie.finPartie(joueur1: joueur1, joueur2: joueur2)
+        
+        
+    } else {
+        
+        switch choix {
+        case 1:
+            soin(joueur: joueur1)
+        case 2:
+            attaque(joueur1: joueur1, joueur2: joueur2)
+        default:
+            print(" ")
+        }
     }
+
     
 }
