@@ -10,7 +10,7 @@ import Foundation
 
 class Player {
     var name: String
-    var team = [Character]()
+    var team = [Pokemon]()
     
     init(name: String) {
         self.name = name
@@ -19,18 +19,24 @@ class Player {
     func choixPokemon(pokemon: String) -> String {
         
         switch pokemon {
-        case "pikachu":
-            self.team.append(pikachu)
-        case "roucool":
-            self.team.append(roucool)
-        case "magicarpe":
-            self.team.append(magicarpe)
-        case "reptincel":
-            self.team.append(reptincel)
-        case "abra":
-            self.team.append(abra)
-        case "ronflex":
-            self.team.append(ronflex)
+        case "salameche":
+            self.team.append(salameche)
+        case "caninos":
+            self.team.append(caninos)
+        case "goupix":
+            self.team.append(goupix)
+        case "chetiflor":
+            self.team.append(chetiflor)
+        case "chenipan":
+            self.team.append(chenipan)
+        case "bulbizarre":
+            self.team.append(bulbizarre)
+        case "carapuce":
+            self.team.append(carapuce)
+        case "ptitard":
+            self.team.append(ptitard)
+        case "ramoloss":
+            self.team.append(ramoloss)
         default:
             print("rien a ajouter")
         }

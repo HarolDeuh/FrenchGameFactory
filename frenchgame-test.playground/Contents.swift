@@ -1,49 +1,131 @@
 import UIKit
 
-enum GameState {
-    case NewGame, InGame, EndGame
-}
+// J'ai 3 types de pokemons : eau, plante, feu
 
-class Joueur {
-    var name: String
-    var team = [""]
+// eau > feu
+// feu > plante
+// plante > eau
+
+
+
+
+
+class Pokemon {
     
-    init(name: String) {
-        self.name = name
+    enum PokemonType {
+        case eau, plante, feu
     }
-}
-
-
-class Smackdown {
-    var name: String
+    
+    
+    var type: PokemonType
     var vie: Int = 100
-    var arme: Arme
+    var damage: Int = 20
     
+    init(type: PokemonType) {
+        self.type = type
+        
+        switch type {
+        case .eau:
+            print("Pokemon Eau")
+        case .feu:
+            print("Pokemon Feu")
+        case .plante:
+            print("Pokemon Plante")
+        }
+    }
     
-    init(name: String, arme: Arme) {
-        self.name = name
-        self.arme = arme
+    func charge(victime: Pokemon) -> Int {
+        // Le code
+        victime.vie -= self.damage
+        return victime.vie
     }
 }
 
 
-class Arme {
-    var name: String
-    var attaque : Int
+class PokemonEau: Pokemon {
     
-    init(name: String, attaque: Int) {
-        self.name = name
-        self.attaque = attaque
+    init() {
+        super.init(type: .eau)
+    }
+    
+    override func charge(victime: Pokemon) -> Int {
+        
+        switch victime.type {
+            
+        case .feu:
+            victime.vie -= (damage + 20)
+            print("attaque tres efficace")
+        case .plante:
+            victime.vie -= (damage / 4)
+            print("attaque sans trop d'effet")
+        default:
+            victime.vie -= self.damage
+            print("attaque normal")
+        }
+        
+        
+        return victime.vie
     }
 }
 
-var youCantSeeMee = Arme(name: "You Caan't see mee", attaque: 20)
-var blabla = Arme(name: "le Blabla", attaque: 15)
+class PokemonFeu: Pokemon {
+    init() {
+        super.init(type: .feu)
+    }
+    
+    override func charge(victime: Pokemon) -> Int {
+           
+           switch victime.type {
+               
+           case .plante:
+               victime.vie -= (damage + 20)
+               print("attaque tres efficace")
+           case .eau:
+               victime.vie -= (damage / 4)
+               print("attaque sans trop d'effet")
+           default:
+            victime.vie -= self.damage
+               print("attaque normal")
+           }
+        
+           return victime.vie
+       }
+    
+    
+}
 
-var johncena = Smackdown(name: "John Cena", arme: youCantSeeMee)
-var tripleH = Smackdown(name: "Triple H", arme: blabla)
+class PokemonPlante: Pokemon {
+    init() {
+        super.init(type: .plante)
+    }
+    
+    override func charge(victime: Pokemon) -> Int {
+        switch victime.type {
+        case .eau:
+            victime.vie -= (damage + 20)
+            print("attaque tres efficace")
+        case .feu:
+            victime.vie -= (damage / 4)
+            print("attaque sans trop d'effet")
+        default:
+            victime.vie -= self.damage
+            print("attaque normal")
+        }
+        
+        return victime.vie
+    }
+    
+}
 
+var magicarpe = PokemonEau()
+var carapuce = PokemonEau()
+var salameche = PokemonFeu()
+var bulbizarre = PokemonPlante()
 
-print(johncena.arme.attaque)
-print(johncena.vie - tripleH.arme.attaque)
+magicarpe.vie
+carapuce.charge(victime: magicarpe)
+magicarpe.vie
 
+salameche.vie
+carapuce.charge(victime: salameche)
+salameche.vie

@@ -8,11 +8,23 @@
 
 import Foundation
 
+// Les pokemons Eau
+carapuce.name = "Carapuce"
+ptitard.name = "Ptitard"
+ramoloss.name = "Ramolos"
+
+// Les pokemons feu
+salameche.name = "Salameche"
+goupix.name = "Goupix"
+caninos.name = "Caninos"
+
+// les pokemons Plante
+bulbizarre.name = "Bulbizarre"
+chenipan.name = "Chenipan"
+chetiflor.name = "Chetiflor"
+
 // MARK: variables et fonctions pour lancer le jeu
-
-
 var state: GameState = .NewGame
-
 var newPartie = Game()
 
 
@@ -35,15 +47,3 @@ let tableauJoueur = [monJoueurUn, monJoueurDeux].shuffled()
 newPartie.debutPartie(joueur1: monJoueurUn, joueur2: monJoueurDeux)
 newPartie.milieuPartie(joueur1: monJoueurUn, joueur2: monJoueurDeux)
 newPartie.finPartie(joueur1: monJoueurUn, joueur2: monJoueurDeux)
-
-
-/*
- pokemons dispo :
- 
- pikachu
- roucool
- magicarpe
- reptincel
- abra
- ronflex
- */

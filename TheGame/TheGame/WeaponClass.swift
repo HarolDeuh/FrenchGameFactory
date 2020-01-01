@@ -20,7 +20,7 @@ class Weapon {
 
 
 // Je crée les armes
-let monRandom = Int.random(in: 0 ..< 40)
+let monRandom = Int.random(in: 10 ..< 40)
 
 
 let armeUn = Weapon(name: "Arme 1", attaque: Int.random(in: 0 ..< 40))

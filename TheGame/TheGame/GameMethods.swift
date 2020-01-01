@@ -10,10 +10,16 @@ import Foundation
 
 // Methode qui permet de créer les équipes des joueurs. 3 Pokémons par joueur
 func createTeam(joueur: Player) {
-    print("\(joueur.name), À votre tour")
+    print("\(joueur.name), à ton tour")
+    
+    print("Tu peux choisir parmi :")
+    
+    for nom in tableauPokemon {
+        print(nom.name!)
+    }
     
     for choice in 1...1 {
-        print("Choisissez les pokémons de votre équipe (encore \(4 - choice))")
+        print("Choisis un pokémon à ajouter a ton équipe (encore \(4 - choice))")
         let pokemon = readLine()!
         joueur.choixPokemon(pokemon: pokemon)
         
@@ -25,58 +31,61 @@ func createTeam(joueur: Player) {
 
 
 //Methode pour attaquer
-func attaque(joueur1: Player, joueur2:Player) {
+
+
+func attaque(joueur1: Player, joueur2: Player) {
     print("\(joueur1.name), quel pokemon souhaites-tu utiliser pour ton attaque (1, 2, 3)")
-    print("Dans votre equipe il y a")
-    
+    print("Dans ton equipe il y a")
+
     for (index, pokemon) in joueur1.team.enumerated() {
-        print(" \(index + 1) \(pokemon.name): \(pokemon.weapon.attaque) ATT")
+        print(" \(index + 1) \(pokemon.name!): \(pokemon.damage) ATT")
     }
-    
+
     let pokemonBonus = Int(readLine(strippingNewline: true)!)!
-    
+
     print("Choisis le pokémon que tu souhaites attaquer (1, 2, 3)")
     print("L'équipe de \(joueur2.name) est composée de")
-    
+
     for (index, pokemon) in joueur2.team.enumerated() {
-        print(" \(index + 1) \(pokemon.name): \(pokemon.vie) PV")
+        print(" \(index + 1) \(pokemon.name!): \(pokemon.vie) PV")
     }
     let pokemonMalus = Int(readLine(strippingNewline: true)!)!
-    
-    print("\(joueur1.name): Votre pokemon \(joueur1.team[pokemonBonus - 1].name) attaque le pokemon \(joueur2.team[pokemonMalus - 1].name) ")
-    
-    joueur2.team[pokemonMalus - 1].vie -=  joueur1.team[pokemonBonus - 1].weapon.attaque
-    print("Il lui inflige \(joueur1.team[pokemonBonus - 1].weapon.attaque) PV ")
-    print("Le pokemon \(joueur2.team[pokemonMalus - 1].name) a maintenant \(joueur2.team[pokemonMalus - 1].vie) PV ")
+
+    print("\(joueur1.name): Ton pokemon \(joueur1.team[pokemonBonus - 1].name!) attaque le pokemon \(joueur2.team[pokemonMalus - 1].name!) ")
+
+    joueur1.team[pokemonBonus - 1].charge(victime: joueur2.team[pokemonMalus - 1])
+
+    //print("Il lui inflige \(joueur1.team[pokemonBonus - 1].damage) PV ")
+    print("Le pokemon \(joueur2.team[pokemonMalus - 1].name!) a maintenant \(joueur2.team[pokemonMalus - 1].vie) PV ")
     print(separateur)
-    
-    if joueur2.team[pokemonMalus - 1].vie < 0 {
-        print("\(joueur2.team[pokemonMalus - 1].name) est battu ! Il n'est plus disponible")
-        
+
+    if joueur2.team[pokemonMalus - 1].vie <= 0 {
+        print("\(joueur2.team[pokemonMalus - 1].name!) est battu ! Il n'est plus disponible")
+
         joueur2.team.remove(at: pokemonMalus - 1)
         print("\(joueur2.name), il te reste \(joueur2.team.count) pokémons dispo")
-        
+
         if joueur2.team.isEmpty {
-            print("\(joueur2.name) tu n'as plus de pokemons disponible, tu as perdus")
+            print("\(joueur2.name) tu n'as plus de pokemons disponible, tu as perdu")
         }
     }
+
 }
 
 
 // Methode pour soigner
 func soin(joueur: Player) {
-    print("\(joueur.name): Vous avez dans votre équipe \(joueur.team.count) pokemons")
-    print("Choisissez celui que vous souhaitez soigner (1, 2 ou 3)")
-    //print("Dans votre equipe il y a")
+    print("\(joueur.name): Tu as dans ton équipe \(joueur.team.count) pokemons")
+    print("Choisis celui que tu souhaites soigner (1, 2 ou 3)")
     
     for (index, pokemon) in joueur.team.enumerated() {
-        print(" \(index + 1) \(pokemon.name): \(pokemon.vie) PV")
+        print(" \(index + 1) \(pokemon.name!): \(pokemon.vie) PV")
     }
     
     let pokemonSoin = Int(readLine()!)!
     
     joueur.team[pokemonSoin - 1].vie += 30
-    print("Votre pokemon \(joueur.team[pokemonSoin - 1].name) a maintenant \(joueur.team[pokemonSoin - 1].vie) PV")
+    print("Ton pokemon \(joueur.team[pokemonSoin - 1].name!) a maintenant \(joueur.team[pokemonSoin - 1].vie) PV")
     print(separateur)
 }
 
@@ -86,7 +95,6 @@ func leTour(leTableau: [Player]) {
     
     if leTableau[0].isDead() {
         print("Tu t'es bien battu")
-        //finPartie()
         newPartie.finPartie(joueur1: leTableau[0], joueur2: leTableau[1])
         
     } else {
@@ -115,9 +123,7 @@ func queFaire(joueur1: Player, joueur2: Player) {
     let choix = Int(readLine()!)!
     
     if joueur1.team.isEmpty || joueur2.team.isEmpty {
-        //finPartie()
         newPartie.finPartie(joueur1: joueur1, joueur2: joueur2)
-        
         
     } else {
         
@@ -127,7 +133,7 @@ func queFaire(joueur1: Player, joueur2: Player) {
         case 2:
             attaque(joueur1: joueur1, joueur2: joueur2)
         default:
-            print(" ")
+            print("")
         }
     }
 

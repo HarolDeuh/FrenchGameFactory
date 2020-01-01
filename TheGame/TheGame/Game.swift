@@ -9,12 +9,15 @@
 import Foundation
 
 class Game {
+    
+    
     var state: GameState = .NewGame
     var joueur1: Player?
     var joueur2: Player?
-    var nbrTour: Int = 1
+    var nbrTour: Int = 0
     
     func debutPartie(joueur1: Player, joueur2: Player) {
+        
         print("Joueur 1: \(monJoueurUn.name)")
         print("Joueur 2: \(monJoueurDeux.name)")
         print(separateur)
@@ -26,14 +29,11 @@ class Game {
         print("Il y a \(monJoueurDeux.team.count) pokemons dans l'equipe de \(monJoueurDeux.name)")
         
         print(separateur2)
-        print(separateur2)
         
-        //milieuPartie()
-        self.milieuPartie(joueur1: joueur1, joueur2: joueur2)
+
     }
     
     func milieuPartie(joueur1: Player, joueur2: Player) {
-        // code
         
         while !joueur1.isDead() && !joueur2.isDead() {
             leTour(leTableau: tableauJoueur)
@@ -42,10 +42,9 @@ class Game {
     }
     
     func finPartie(joueur1: Player, joueur2: Player) {
-        // code
         print(separateur2)
         print("F I N   D E   P A R T I E")
-        print(nbrTour)
+        print("Vous avez effectué \(nbrTour) tours dans cette partie ")
         print(separateur2)
     }
     
