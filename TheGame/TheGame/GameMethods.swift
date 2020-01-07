@@ -106,7 +106,6 @@ func evolution(joueur: Player) {
 func leTour(leTableau: [Player]) {
     
     var nbrRandom = Int.random(in: 1...10)
-    nbrRandom = 7
     
     if leTableau[0].isDead() {
         print("Tu t'es bien battu")
@@ -117,6 +116,7 @@ func leTour(leTableau: [Player]) {
         if nbrRandom == 7 {
             // Le code
             evolution(joueur: leTableau[0])
+            nbrRandom = Int.random(in: 1...15)
         }
         print("\(leTableau[0].name), c'est toi qui commence, que souhaites-tu faire ?")
         print("(1) Soigner un membre de ton équipe ou alors (2) attaquer un pokémon de \(leTableau[1].name) ?")
@@ -132,6 +132,7 @@ func leTour(leTableau: [Player]) {
         if nbrRandom == 7 {
             // Le code
             evolution(joueur: leTableau[1])
+            nbrRandom = Int.random(in: 1...15)
         }
         
         print("\(leTableau[1].name), à ton tour, que souhaites-tu faire ?")
