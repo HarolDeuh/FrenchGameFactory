@@ -25,8 +25,8 @@ class Game {
         createTeam(joueur: monJoueurUn)
         createTeam(joueur: monJoueurDeux)
         
-        print("Il y a \(monJoueurUn.team.count) pokemons dans l'equipe de \(monJoueurUn.name)")
-        print("Il y a \(monJoueurDeux.team.count) pokemons dans l'equipe de \(monJoueurDeux.name)")
+        print("Il y a \(monJoueurUn.team.count) pokemons dans l'equipe de \(monJoueurUn.name):  \(monJoueurUn.team[0].name!), \(monJoueurUn.team[1].name!)")
+        print("Il y a \(monJoueurDeux.team.count) pokemons dans l'equipe de \(monJoueurDeux.name):  \(monJoueurDeux.team[0].name!), \(monJoueurDeux.team[1].name!)")
         
         print(separateur2)
         

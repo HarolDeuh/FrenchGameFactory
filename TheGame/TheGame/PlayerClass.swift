@@ -19,28 +19,36 @@ class Player {
     func choixPokemon(pokemon: String) -> String {
         
         switch pokemon {
-        case "salameche":
-            self.team.append(salameche)
-        case "caninos":
-            self.team.append(caninos)
-        case "goupix":
-            self.team.append(goupix)
-        case "chetiflor":
-            self.team.append(chetiflor)
-        case "chenipan":
-            self.team.append(chenipan)
-        case "bulbizarre":
-            self.team.append(bulbizarre)
-        case "carapuce":
-            self.team.append(carapuce)
-        case "ptitard":
-            self.team.append(ptitard)
-        case "ramoloss":
-            self.team.append(ramoloss)
+        case "1":
+            self.team.append(tableauPokemon[0])
+            tableauPokemon.remove(at: 0)
+        case "2":
+            self.team.append(tableauPokemon[1])
+            tableauPokemon.remove(at: 1)
+        case "3":
+            self.team.append(tableauPokemon[2])
+            tableauPokemon.remove(at: 2)
+        case "4":
+            self.team.append(tableauPokemon[3])
+            tableauPokemon.remove(at: 3)
+        case "5":
+            self.team.append(tableauPokemon[4])
+            tableauPokemon.remove(at: 4)
+        case "6":
+            self.team.append(tableauPokemon[5])
+            tableauPokemon.remove(at: 5)
+        case "7":
+            self.team.append(tableauPokemon[6])
+            tableauPokemon.remove(at: 6)
+        case "8":
+            self.team.append(tableauPokemon[7])
+            tableauPokemon.remove(at: 7)
+        case "9":
+            self.team.append(tableauPokemon[8])
+            tableauPokemon.remove(at: 8)
         default:
             print("rien a ajouter")
         }
-        
         return pokemon
     }
     

@@ -14,11 +14,11 @@ func createTeam(joueur: Player) {
     
     print("Tu peux choisir parmi :")
     
-    for nom in tableauPokemon {
-        print(nom.name!)
+    for (index, nom) in tableauPokemon.enumerated() {
+        print("(\(index + 1))\(nom.name!) type : \(nom.type)")
     }
     
-    for choice in 1...1 {
+    for choice in 1...2 {
         print("Choisis un pokémon à ajouter a ton équipe (encore \(4 - choice))")
         let pokemon = readLine()!
         joueur.choixPokemon(pokemon: pokemon)

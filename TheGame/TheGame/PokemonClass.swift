@@ -18,6 +18,8 @@ class Pokemon {
     var vie: Int = 100
     var damage: Int = Int.random(in: 10 ..< 40)
     var type: PokemonType
+    let bonusAttaque: Int = 20
+    let malusAttaque: Int = 4 
     
     
     
@@ -35,4 +37,4 @@ class Pokemon {
     
 }
 
-var tableauPokemon = [carapuce, ptitard, ramoloss, salameche, caninos, goupix, bulbizarre, chenipan, chetiflor ]
+var tableauPokemon = [carapuce, ptitard, ramoloss, salameche, caninos, goupix, bulbizarre, chenipan, chetiflor]

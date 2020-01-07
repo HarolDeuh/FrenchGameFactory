@@ -19,11 +19,11 @@ class PokemonEau: Pokemon {
         switch victime.type {
             
         case .feu:
-            victime.vie -= (damage + 20)
-            print("Il lui inflige \(damage + 20) PV. Attaque tres efficace")
+            victime.vie -= (damage + bonusAttaque)
+            print("Il lui inflige \(damage + bonusAttaque) PV. Attaque tres efficace")
         case .plante:
             victime.vie -= (damage / 4)
-            print("Il lui inflige \(damage / 4) PV. Attaque sans trop d'effet")
+            print("Il lui inflige \(damage / malusAttaque) PV. Attaque sans trop d'effet")
         default:
             victime.vie -= self.damage
         }
