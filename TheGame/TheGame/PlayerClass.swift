@@ -47,7 +47,7 @@ class Player {
             self.team.append(tableauPokemon[8])
             tableauPokemon.remove(at: 8)
         default:
-            print("rien a ajouter")
+            print("Rien a ajouter")
         }
         return pokemon
     }
@@ -55,4 +55,5 @@ class Player {
     func isDead() -> Bool {
         return self.team.count == 0 
     }
+    
 }

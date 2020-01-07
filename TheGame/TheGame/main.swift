@@ -24,7 +24,7 @@ chenipan.name = "Chenipan"
 chetiflor.name = "Chetiflor"
 
 // MARK: variables et fonctions pour lancer le jeu
-var state: GameState = .NewGame
+//var state: GameState = .NewGame
 var newPartie = Game()
 
 

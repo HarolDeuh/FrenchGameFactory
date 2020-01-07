@@ -8,8 +8,8 @@
 
 import Foundation
 
-enum GameState {
-    case NewGame
-    case InGame
-    case EndGame
-}
+//enum GameState {
+//    case NewGame
+//    case InGame
+//    case EndGame
+//}

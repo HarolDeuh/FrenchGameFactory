@@ -11,7 +11,7 @@ import Foundation
 class Game {
     
     
-    var state: GameState = .NewGame
+    //var state: GameState = .NewGame
     var joueur1: Player?
     var joueur2: Player?
     var nbrTour: Int = 0
@@ -25,10 +25,11 @@ class Game {
         createTeam(joueur: monJoueurUn)
         createTeam(joueur: monJoueurDeux)
         
-        print("Il y a \(monJoueurUn.team.count) pokemons dans l'equipe de \(monJoueurUn.name):  \(monJoueurUn.team[0].name!), \(monJoueurUn.team[1].name!)")
-        print("Il y a \(monJoueurDeux.team.count) pokemons dans l'equipe de \(monJoueurDeux.name):  \(monJoueurDeux.team[0].name!), \(monJoueurDeux.team[1].name!)")
+        print("Il y a \(monJoueurUn.team.count) pokemons dans l'equipe de \(monJoueurUn.name)")
+        print("Il y a \(monJoueurDeux.team.count) pokemons dans l'equipe de \(monJoueurDeux.name)")
         
         print(separateur2)
+        
         
 
     }

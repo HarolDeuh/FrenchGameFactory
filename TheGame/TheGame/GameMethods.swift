@@ -73,6 +73,8 @@ func attaque(joueur1: Player, joueur2: Player) {
 }
 
 
+
+
 // Methode pour soigner
 func soin(joueur: Player) {
     print("\(joueur.name): Tu as dans ton équipe \(joueur.team.count) pokemons")
@@ -89,15 +91,33 @@ func soin(joueur: Player) {
     print(separateur)
 }
 
+// Methode evolution
+
+func evolution(joueur: Player) {
+    let evol = joueur.team[Int.random(in:0...1)]
+    evol.damage += 20
+    evol.vie += 30
+    print("Oh ! \(joueur.name), ton pokemon \(evol.name!) évolue ! Il a maintenant \(evol.damage) ATT et \(evol.vie) PV ")
+    
+}
+
 
 // Methode pour organiser les tours
 func leTour(leTableau: [Player]) {
+    
+    var nbrRandom = Int.random(in: 1...10)
+    nbrRandom = 7
     
     if leTableau[0].isDead() {
         print("Tu t'es bien battu")
         newPartie.finPartie(joueur1: leTableau[0], joueur2: leTableau[1])
         
     } else {
+        
+        if nbrRandom == 7 {
+            // Le code
+            evolution(joueur: leTableau[0])
+        }
         print("\(leTableau[0].name), c'est toi qui commence, que souhaites-tu faire ?")
         print("(1) Soigner un membre de ton équipe ou alors (2) attaquer un pokémon de \(leTableau[1].name) ?")
         
@@ -108,6 +128,12 @@ func leTour(leTableau: [Player]) {
         print("Tu t'es bien battu")
         
     } else {
+        
+        if nbrRandom == 7 {
+            // Le code
+            evolution(joueur: leTableau[1])
+        }
+        
         print("\(leTableau[1].name), à ton tour, que souhaites-tu faire ?")
         print("(1) Soigner un membre de ton équipe ou alors (2) attaquer un pokémon de \(leTableau[0].name) ?")
         queFaire(joueur1: leTableau[1], joueur2: leTableau[0])
