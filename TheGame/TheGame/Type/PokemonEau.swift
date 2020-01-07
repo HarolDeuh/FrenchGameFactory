@@ -14,22 +14,22 @@ class PokemonEau: Pokemon {
         super.init(type: .eau)
     }
     
-    override func charge(victime: Pokemon) -> Int {
+    override func charge(sufferer: Pokemon) -> Int {
         
-        switch victime.type {
+        switch sufferer.type {
             
         case .feu:
-            victime.vie -= (damage + bonusAttaque)
-            print("Il lui inflige \(damage + bonusAttaque) PV. Attaque tres efficace")
+            sufferer.life -= (damage + attackUp)
+            print("Il lui inflige \(damage + attackUp) PV. Attaque tres efficace")
         case .plante:
-            victime.vie -= (damage / 4)
-            print("Il lui inflige \(damage / malusAttaque) PV. Attaque sans trop d'effet")
+            sufferer.life -= (damage / 4)
+            print("Il lui inflige \(damage / attackDown) PV. Attaque sans trop d'effet")
         default:
-            victime.vie -= self.damage
+            sufferer.life -= self.damage
         }
         
         
-        return victime.vie
+        return sufferer.life
     }
 }
 

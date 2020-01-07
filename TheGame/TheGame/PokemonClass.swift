@@ -15,11 +15,11 @@ class Pokemon {
     }
     
     var name: String?
-    var vie: Int = 100
+    var life: Int = 100
     var damage: Int = Int.random(in: 10 ..< 40)
     var type: PokemonType
-    let bonusAttaque: Int = 20
-    let malusAttaque: Int = 4 
+    let attackUp: Int = 20
+    let attackDown: Int = 4 
     
     
     
@@ -28,13 +28,12 @@ class Pokemon {
     }
     
     
-    func charge(victime: Pokemon) -> Int {
-        // Le code
-        victime.vie -= self.damage
-        return victime.vie
+    func charge(sufferer: Pokemon) -> Int {
+        sufferer.life -= self.damage
+        return sufferer.life
     }
     
     
 }
 
-var tableauPokemon = [carapuce, ptitard, ramoloss, salameche, caninos, goupix, bulbizarre, chenipan, chetiflor]
+var pokemonArray = [carapuce, ptitard, ramoloss, salameche, caninos, goupix, bulbizarre, chenipan, chetiflor]

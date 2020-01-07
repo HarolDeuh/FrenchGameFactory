@@ -16,36 +16,36 @@ class Player {
         self.name = name
     }
     
-    func choixPokemon(pokemon: String) -> String {
+    func pokemonChoice(pokemon: String) -> String {
         
         switch pokemon {
         case "1":
-            self.team.append(tableauPokemon[0])
-            tableauPokemon.remove(at: 0)
+            self.team.append(pokemonArray[0])
+            pokemonArray.remove(at: 0)
         case "2":
-            self.team.append(tableauPokemon[1])
-            tableauPokemon.remove(at: 1)
+            self.team.append(pokemonArray[1])
+            pokemonArray.remove(at: 1)
         case "3":
-            self.team.append(tableauPokemon[2])
-            tableauPokemon.remove(at: 2)
+            self.team.append(pokemonArray[2])
+            pokemonArray.remove(at: 2)
         case "4":
-            self.team.append(tableauPokemon[3])
-            tableauPokemon.remove(at: 3)
+            self.team.append(pokemonArray[3])
+            pokemonArray.remove(at: 3)
         case "5":
-            self.team.append(tableauPokemon[4])
-            tableauPokemon.remove(at: 4)
+            self.team.append(pokemonArray[4])
+            pokemonArray.remove(at: 4)
         case "6":
-            self.team.append(tableauPokemon[5])
-            tableauPokemon.remove(at: 5)
+            self.team.append(pokemonArray[5])
+            pokemonArray.remove(at: 5)
         case "7":
-            self.team.append(tableauPokemon[6])
-            tableauPokemon.remove(at: 6)
+            self.team.append(pokemonArray[6])
+            pokemonArray.remove(at: 6)
         case "8":
-            self.team.append(tableauPokemon[7])
-            tableauPokemon.remove(at: 7)
+            self.team.append(pokemonArray[7])
+            pokemonArray.remove(at: 7)
         case "9":
-            self.team.append(tableauPokemon[8])
-            tableauPokemon.remove(at: 8)
+            self.team.append(pokemonArray[8])
+            pokemonArray.remove(at: 8)
         default:
             print("Rien a ajouter")
         }

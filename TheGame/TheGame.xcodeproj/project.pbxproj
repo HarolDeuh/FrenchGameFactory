@@ -11,10 +11,8 @@
 		5495E1A823A7B446006C192B /* PokemonFeu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5495E1A723A7B446006C192B /* PokemonFeu.swift */; };
 		5495E1AA23A7B459006C192B /* PokemonPlante.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5495E1A923A7B459006C192B /* PokemonPlante.swift */; };
 		54CD010E2391CA53007A27B6 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD010D2391CA53007A27B6 /* main.swift */; };
-		54CD01152391CC85007A27B6 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD01142391CC85007A27B6 /* GameState.swift */; };
 		54CD01172391CCC7007A27B6 /* PlayerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD01162391CCC7007A27B6 /* PlayerClass.swift */; };
 		54CD01192391CD02007A27B6 /* PokemonClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD01182391CD02007A27B6 /* PokemonClass.swift */; };
-		54CD011B2391CD1B007A27B6 /* WeaponClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD011A2391CD1B007A27B6 /* WeaponClass.swift */; };
 		54D0B44E2395532C008B0DF7 /* GameMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D0B44D2395532C008B0DF7 /* GameMethods.swift */; };
 		54D0B45023983E9E008B0DF7 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D0B44F23983E9E008B0DF7 /* Game.swift */; };
 /* End PBXBuildFile section */
@@ -37,10 +35,8 @@
 		5495E1A923A7B459006C192B /* PokemonPlante.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonPlante.swift; sourceTree = "<group>"; };
 		54CD010A2391CA53007A27B6 /* TheGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TheGame; sourceTree = BUILT_PRODUCTS_DIR; };
 		54CD010D2391CA53007A27B6 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		54CD01142391CC85007A27B6 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		54CD01162391CCC7007A27B6 /* PlayerClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerClass.swift; sourceTree = "<group>"; };
 		54CD01182391CD02007A27B6 /* PokemonClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonClass.swift; sourceTree = "<group>"; };
-		54CD011A2391CD1B007A27B6 /* WeaponClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponClass.swift; sourceTree = "<group>"; };
 		54D0B44D2395532C008B0DF7 /* GameMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMethods.swift; sourceTree = "<group>"; };
 		54D0B44F23983E9E008B0DF7 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,10 +83,8 @@
 			children = (
 				54CD010D2391CA53007A27B6 /* main.swift */,
 				54D0B44F23983E9E008B0DF7 /* Game.swift */,
-				54CD01142391CC85007A27B6 /* GameState.swift */,
 				54D0B44D2395532C008B0DF7 /* GameMethods.swift */,
 				54CD01162391CCC7007A27B6 /* PlayerClass.swift */,
-				54CD011A2391CD1B007A27B6 /* WeaponClass.swift */,
 				54CD01182391CD02007A27B6 /* PokemonClass.swift */,
 				5495E1AB23A7B5E0006C192B /* Type */,
 			);
@@ -159,11 +153,9 @@
 				5495E1AA23A7B459006C192B /* PokemonPlante.swift in Sources */,
 				54CD01172391CCC7007A27B6 /* PlayerClass.swift in Sources */,
 				54D0B45023983E9E008B0DF7 /* Game.swift in Sources */,
-				54CD011B2391CD1B007A27B6 /* WeaponClass.swift in Sources */,
 				54CD010E2391CA53007A27B6 /* main.swift in Sources */,
 				54CD01192391CD02007A27B6 /* PokemonClass.swift in Sources */,
 				5495E1A823A7B446006C192B /* PokemonFeu.swift in Sources */,
-				54CD01152391CC85007A27B6 /* GameState.swift in Sources */,
 				5495E1A623A7B43B006C192B /* PokemonEau.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

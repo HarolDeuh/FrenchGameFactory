@@ -16,17 +16,17 @@ class Game {
     var joueur2: Player?
     var nbrTour: Int = 0
     
-    func debutPartie(joueur1: Player, joueur2: Player) {
+    func earlyGame(player1: Player, player2: Player) {
         
-        print("Joueur 1: \(monJoueurUn.name)")
-        print("Joueur 2: \(monJoueurDeux.name)")
+        print("Joueur 1: \(myPlayerOne.name)")
+        print("Joueur 2: \(myPlayerTwo.name)")
         print(separateur)
 
-        createTeam(joueur: monJoueurUn)
-        createTeam(joueur: monJoueurDeux)
+        createTeam(player: myPlayerOne)
+        createTeam(player: myPlayerTwo)
         
-        print("Il y a \(monJoueurUn.team.count) pokemons dans l'equipe de \(monJoueurUn.name)")
-        print("Il y a \(monJoueurDeux.team.count) pokemons dans l'equipe de \(monJoueurDeux.name)")
+        print("Il y a \(myPlayerOne.team.count) pokemons dans l'equipe de \(myPlayerOne.name)")
+        print("Il y a \(myPlayerTwo.team.count) pokemons dans l'equipe de \(myPlayerTwo.name)")
         
         print(separateur2)
         
@@ -34,15 +34,15 @@ class Game {
 
     }
     
-    func milieuPartie(joueur1: Player, joueur2: Player) {
+    func midGame(player1: Player, player2: Player) {
         
-        while !joueur1.isDead() && !joueur2.isDead() {
-            leTour(leTableau: tableauJoueur)
+        while !player1.isDead() && !player2.isDead() {
+            gameRound(myPlayerArray: playersArray)
             nbrTour += 1
         }
     }
     
-    func finPartie(joueur1: Player, joueur2: Player) {
+    func endGame(player1: Player, player2: Player) {
         print(separateur2)
         print("F I N   D E   P A R T I E")
         print("Vous avez effectué \(nbrTour) tours dans cette partie ")

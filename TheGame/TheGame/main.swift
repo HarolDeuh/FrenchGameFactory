@@ -30,20 +30,20 @@ var newPartie = Game()
 
 // On crée les 2 joueurs de la partie
 print("Joueur 1, veuillez entrer votre prenom")
-let prenomUn = readLine(strippingNewline: true)!
+let firstName = readLine(strippingNewline: true)!
 print("Joueur 2, veuillez entrer votre prenom")
-let prenomDeux = readLine(strippingNewline: true)!
+let secondName = readLine(strippingNewline: true)!
 
 //Création des objets Player
-let monJoueurUn = Player(name: prenomUn)
-let monJoueurDeux = Player(name: prenomDeux)
+let myPlayerOne = Player(name: firstName)
+let myPlayerTwo = Player(name: secondName)
 
 
 // MARK: variables texte console
 var separateur = "------------------------------"
 var separateur2 = "=============================="
-let tableauJoueur = [monJoueurUn, monJoueurDeux].shuffled()
+let playersArray = [myPlayerOne, myPlayerTwo].shuffled()
 
-newPartie.debutPartie(joueur1: monJoueurUn, joueur2: monJoueurDeux)
-newPartie.milieuPartie(joueur1: monJoueurUn, joueur2: monJoueurDeux)
-newPartie.finPartie(joueur1: monJoueurUn, joueur2: monJoueurDeux)
+newPartie.earlyGame(player1: myPlayerOne, player2: myPlayerTwo)
+newPartie.midGame(player1: myPlayerOne, player2: myPlayerTwo)
+newPartie.endGame(player1: myPlayerOne, player2: myPlayerTwo)
