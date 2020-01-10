@@ -13,7 +13,7 @@ class PokemonPlante: Pokemon {
         super.init(type: .plante)
     }
     
-    override func charge(sufferer: Pokemon) -> Int {
+    override func charge(sufferer: Pokemon) {
         switch sufferer.type {
         case .eau:
             sufferer.life -= (damage + 20)
@@ -26,7 +26,6 @@ class PokemonPlante: Pokemon {
             print("attaque normal")
         }
         
-        return sufferer.life
     }
     
 }

@@ -13,7 +13,7 @@ class PokemonFeu: Pokemon {
         super.init(type: .feu)
     }
     
-    override func charge(sufferer: Pokemon) -> Int {
+    override func charge(sufferer: Pokemon) {
            
            switch sufferer.type {
                
@@ -28,7 +28,7 @@ class PokemonFeu: Pokemon {
                print("attaque normal")
            }
         
-           return sufferer.life
+           
        }
     
     

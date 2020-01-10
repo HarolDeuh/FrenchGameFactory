@@ -14,25 +14,21 @@ func createTeam(player: Player) {
     
     print("Tu peux choisir parmi :")
     
-    for (index, pokemon) in pokemonArray.enumerated() {
-        print("(\(index + 1))\(pokemon.name!) type : \(pokemon.type)")
-    }
-    
-    for choice in 1...2 {
+    for choice in 1...3 {
+        
+        for (index, pokemon) in pokemonArray.enumerated() {
+            print("(\(index + 1))\(pokemon.name!) type : \(pokemon.type)")
+        }
+        
         print("Choisis un pokémon à ajouter a ton équipe (encore \(4 - choice))")
-        let pokemon = readLine()!
+        let pokemon = Int(readLine(strippingNewline: true)!)!
         player.pokemonChoice(pokemon: pokemon)
         
     }
     print(separateur)
 }
 
-
-
-
 //Methode pour attaquer
-
-
 func attack(player1: Player, player2: Player) {
     print("\(player1.name), quel pokemon souhaites-tu utiliser pour ton attaque (1, 2, 3)")
     print("Dans ton equipe il y a")
@@ -55,7 +51,6 @@ func attack(player1: Player, player2: Player) {
 
     player1.team[pokemonBonus - 1].charge(sufferer: player2.team[pokemonMalus - 1])
 
-    //print("Il lui inflige \(joueur1.team[pokemonBonus - 1].damage) PV ")
     print("Le pokemon \(player2.team[pokemonMalus - 1].name!) a maintenant \(player2.team[pokemonMalus - 1].life) PV ")
     print(separateur)
 
@@ -69,11 +64,7 @@ func attack(player1: Player, player2: Player) {
             print("\(player2.name) tu n'as plus de pokemons disponible, tu as perdu")
         }
     }
-
 }
-
-
-
 
 // Methode pour soigner
 func care(player: Player) {
@@ -92,15 +83,12 @@ func care(player: Player) {
 }
 
 // Methode evolution
-
 func evolution(joueur: Player) {
     let evol = joueur.team[Int.random(in:0...1)]
     evol.damage += 20
     evol.life += 30
     print("Oh ! \(joueur.name), ton pokemon \(evol.name!) évolue ! Il a maintenant \(evol.damage) ATT et \(evol.life) PV ")
-    
 }
-
 
 // Methode pour organiser les tours
 func gameRound(myPlayerArray: [Player]) {
@@ -114,7 +102,6 @@ func gameRound(myPlayerArray: [Player]) {
     } else {
         
         if nbrRandom == 7 {
-            // Le code
             evolution(joueur: myPlayerArray[0])
             nbrRandom = Int.random(in: 1...15)
         }
@@ -139,11 +126,7 @@ func gameRound(myPlayerArray: [Player]) {
         print("(1) Soigner un membre de ton équipe ou alors (2) attaquer un pokémon de \(myPlayerArray[0].name) ?")
         toDo(player1: myPlayerArray[1], player2: myPlayerArray[0])
     }
-    
 }
-
-
-
 
 // Methode pour choisir l'action
 func toDo(player1: Player, player2: Player) {
@@ -160,9 +143,9 @@ func toDo(player1: Player, player2: Player) {
         case 2:
             attack(player1: player1, player2: player2)
         default:
-            print("")
+            print("Tu n'as pas fait ton choix, que souhaites-tu faire ?")
+            print("(1) Soigner un membre de ton équipe ou alors (2) attaquer un pokémon de ton adversaire")
+            toDo(player1: player1, player2: player2)
         }
     }
-
-    
 }

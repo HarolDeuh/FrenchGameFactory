@@ -14,7 +14,7 @@ class PokemonEau: Pokemon {
         super.init(type: .eau)
     }
     
-    override func charge(sufferer: Pokemon) -> Int {
+    override func charge(sufferer: Pokemon) {
         
         switch sufferer.type {
             
@@ -27,9 +27,6 @@ class PokemonEau: Pokemon {
         default:
             sufferer.life -= self.damage
         }
-        
-        
-        return sufferer.life
     }
 }
 

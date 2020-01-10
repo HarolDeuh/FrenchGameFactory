@@ -16,7 +16,7 @@ class Pokemon {
     
     var name: String?
     var life: Int = 100
-    var damage: Int = Int.random(in: 10 ..< 40)
+    var damage: Int = Int.random(in: 70 ..< 80)
     var type: PokemonType
     let attackUp: Int = 20
     let attackDown: Int = 4 
@@ -28,12 +28,9 @@ class Pokemon {
     }
     
     
-    func charge(sufferer: Pokemon) -> Int {
+    func charge(sufferer: Pokemon) {
         sufferer.life -= self.damage
-        return sufferer.life
     }
-    
-    
 }
 
 var pokemonArray = [carapuce, ptitard, ramoloss, salameche, caninos, goupix, bulbizarre, chenipan, chetiflor]
