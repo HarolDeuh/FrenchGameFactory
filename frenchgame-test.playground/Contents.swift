@@ -1,131 +1,98 @@
 import UIKit
 
-// J'ai 3 types de pokemons : eau, plante, feu
-
-// eau > feu
-// feu > plante
-// plante > eau
-
-
-
-
-
-class Pokemon {
+class Weapon {
+    var weaponName: String
+    var damage: Int
     
-    enum PokemonType {
-        case eau, plante, feu
-    }
-    
-    
-    var type: PokemonType
-    var vie: Int = 100
-    var damage: Int = 20
-    
-    init(type: PokemonType) {
-        self.type = type
-        
-        switch type {
-        case .eau:
-            print("Pokemon Eau")
-        case .feu:
-            print("Pokemon Feu")
-        case .plante:
-            print("Pokemon Plante")
-        }
-    }
-    
-    func charge(victime: Pokemon) -> Int {
-        // Le code
-        victime.vie -= self.damage
-        return victime.vie
+    init (_ wn: String, _ dmg: Int ) {
+        weaponName = wn
+        damage = dmg
     }
 }
 
 
-class PokemonEau: Pokemon {
+class Sword: Weapon {
+    init () {
+        super.init("Excalibur", Int.random(in: 60...70))
+    }
+    
+}
+
+class Wand: Weapon {
+    init() {
+        super.init("Baguette magique", Int.random(in: 40...50))
+    }
+}
+
+class TheBow: Weapon {
     
     init() {
-        super.init(type: .eau)
-    }
-    
-    override func charge(victime: Pokemon) -> Int {
-        
-        switch victime.type {
-            
-        case .feu:
-            victime.vie -= (damage + 20)
-            print("attaque tres efficace")
-        case .plante:
-            victime.vie -= (damage / 4)
-            print("attaque sans trop d'effet")
-        default:
-            victime.vie -= self.damage
-            print("attaque normal")
-        }
-        
-        
-        return victime.vie
+        super.init("L'arc", Int.random(in: 65...90))
     }
 }
 
-class PokemonFeu: Pokemon {
+
+
+class Character {
+    enum CharacterType {
+        case wizard, knight, bowman
+    }
+    
+    var isType: CharacterType
+    var characterName: String?
+    var life: Int = 100
+    var presentation: String
+    var weapon: Weapon
+
+    
+    init(isType: CharacterType, _ pr: String = "Je suis un personnage", _ wp: Weapon) {
+        self.isType = isType
+        presentation = pr
+        weapon = wp
+
+    }
+    
+}
+
+class Wizard: Character {
     init() {
-        super.init(type: .feu)
+        super.init(
+            isType: .wizard,
+            "Je suis un sorcier",
+            Weapon("Baguette magique", Int.random(in: 40...50)))
     }
-    
-    override func charge(victime: Pokemon) -> Int {
-           
-           switch victime.type {
-               
-           case .plante:
-               victime.vie -= (damage + 20)
-               print("attaque tres efficace")
-           case .eau:
-               victime.vie -= (damage / 4)
-               print("attaque sans trop d'effet")
-           default:
-            victime.vie -= self.damage
-               print("attaque normal")
-           }
-        
-           return victime.vie
-       }
-    
-    
 }
 
-class PokemonPlante: Pokemon {
+
+class Knight: Character {
     init() {
-        super.init(type: .plante)
+        super.init(isType: .knight,
+                   "Je suis un chevalier",
+                   Weapon("Excalibur", Int.random(in: 60...70)))
     }
-    
-    override func charge(victime: Pokemon) -> Int {
-        switch victime.type {
-        case .eau:
-            victime.vie -= (damage + 20)
-            print("attaque tres efficace")
-        case .feu:
-            victime.vie -= (damage / 4)
-            print("attaque sans trop d'effet")
-        default:
-            victime.vie -= self.damage
-            print("attaque normal")
-        }
-        
-        return victime.vie
-    }
-    
 }
 
-var magicarpe = PokemonEau()
-var carapuce = PokemonEau()
-var salameche = PokemonFeu()
-var bulbizarre = PokemonPlante()
+class Bowman: Character {
+    init() {
+        super.init(isType: .bowman,
+                   "Je suis un archer",
+                   Weapon("L'arc", Int.random(in: 70...90)))
+    }
+}
 
-magicarpe.vie
-carapuce.charge(victime: magicarpe)
-magicarpe.vie
 
-salameche.vie
-carapuce.charge(victime: salameche)
-salameche.vie
+var harry = Wizard()
+
+print(harry.weapon.weaponName)
+print(harry.weapon.damage)
+
+var link = Knight()
+
+print(link.weapon.weaponName)
+print(link.weapon.damage)
+
+
+var legolas = Bowman()
+
+print(legolas.weapon.weaponName)
+print(legolas.weapon.damage)
