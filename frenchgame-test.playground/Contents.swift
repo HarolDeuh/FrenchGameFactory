@@ -11,6 +11,8 @@ class Weapon {
 }
 
 
+
+
 class Sword: Weapon {
     init () {
         super.init("Excalibur", Int.random(in: 60...70))
@@ -54,6 +56,7 @@ class Character {
     
 }
 
+
 class Wizard: Character {
     init() {
         super.init(
@@ -62,6 +65,7 @@ class Wizard: Character {
             Weapon("Baguette magique", Int.random(in: 40...50)))
     }
 }
+
 
 
 class Knight: Character {
@@ -96,3 +100,9 @@ var legolas = Bowman()
 
 print(legolas.weapon.weaponName)
 print(legolas.weapon.damage)
+
+
+
+
+
+

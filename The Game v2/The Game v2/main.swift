@@ -8,5 +8,12 @@
 
 import Foundation
 
-print("Hello, World!")
+//player creation
 
+var harold = Player()
+var senan = Player()
+
+var newgame = Game(harold, senan)
+
+newgame.earlyGame()
+newgame.midGame()

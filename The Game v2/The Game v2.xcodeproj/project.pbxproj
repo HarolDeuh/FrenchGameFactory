@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		54B1293623CCF7C000F48576 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1293523CCF7C000F48576 /* main.swift */; };
+		54B1293D23CCF84400F48576 /* CharacterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1293C23CCF84400F48576 /* CharacterClass.swift */; };
+		54B1293F23CCF87800F48576 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1293E23CCF87800F48576 /* Weapon.swift */; };
+		54B1294223CCF8D200F48576 /* WizardClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1294123CCF8D200F48576 /* WizardClass.swift */; };
+		54B1294423CCF8E500F48576 /* BowmanClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1294323CCF8E500F48576 /* BowmanClass.swift */; };
+		54B1294623CCF8F300F48576 /* KnightClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1294523CCF8F300F48576 /* KnightClass.swift */; };
+		54B1294823CCFC2E00F48576 /* PlayerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1294723CCFC2E00F48576 /* PlayerClass.swift */; };
+		54B1294A23CCFC8C00F48576 /* GameClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B1294923CCFC8C00F48576 /* GameClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +32,13 @@
 /* Begin PBXFileReference section */
 		54B1293223CCF7C000F48576 /* The Game v2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "The Game v2"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B1293523CCF7C000F48576 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		54B1293C23CCF84400F48576 /* CharacterClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterClass.swift; sourceTree = "<group>"; };
+		54B1293E23CCF87800F48576 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
+		54B1294123CCF8D200F48576 /* WizardClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardClass.swift; sourceTree = "<group>"; };
+		54B1294323CCF8E500F48576 /* BowmanClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowmanClass.swift; sourceTree = "<group>"; };
+		54B1294523CCF8F300F48576 /* KnightClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightClass.swift; sourceTree = "<group>"; };
+		54B1294723CCFC2E00F48576 /* PlayerClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerClass.swift; sourceTree = "<group>"; };
+		54B1294923CCFC8C00F48576 /* GameClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +72,23 @@
 			isa = PBXGroup;
 			children = (
 				54B1293523CCF7C000F48576 /* main.swift */,
+				54B1293C23CCF84400F48576 /* CharacterClass.swift */,
+				54B1294723CCFC2E00F48576 /* PlayerClass.swift */,
+				54B1294923CCFC8C00F48576 /* GameClass.swift */,
+				54B1294023CCF8B500F48576 /* CharacterType */,
+				54B1293E23CCF87800F48576 /* Weapon.swift */,
 			);
 			path = "The Game v2";
+			sourceTree = "<group>";
+		};
+		54B1294023CCF8B500F48576 /* CharacterType */ = {
+			isa = PBXGroup;
+			children = (
+				54B1294123CCF8D200F48576 /* WizardClass.swift */,
+				54B1294523CCF8F300F48576 /* KnightClass.swift */,
+				54B1294323CCF8E500F48576 /* BowmanClass.swift */,
+			);
+			name = CharacterType;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,7 +149,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54B1294223CCF8D200F48576 /* WizardClass.swift in Sources */,
 				54B1293623CCF7C000F48576 /* main.swift in Sources */,
+				54B1294A23CCFC8C00F48576 /* GameClass.swift in Sources */,
+				54B1294423CCF8E500F48576 /* BowmanClass.swift in Sources */,
+				54B1294823CCFC2E00F48576 /* PlayerClass.swift in Sources */,
+				54B1293D23CCF84400F48576 /* CharacterClass.swift in Sources */,
+				54B1294623CCF8F300F48576 /* KnightClass.swift in Sources */,
+				54B1293F23CCF87800F48576 /* Weapon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
