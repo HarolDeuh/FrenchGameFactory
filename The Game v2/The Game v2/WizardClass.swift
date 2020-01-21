@@ -10,9 +10,10 @@ import Foundation
 
 class Wizard: Character {
     init() {
-        super.init(
-            isType: .wizard,
-            "Je suis un magicien",
-            Weapon("Baguette magique", Int.random(in: 40...50)))
+        super.init("Je suis un magicien", Weapon("Baguette magique", Int.random(in: 40...50)))
+    }
+    
+    override func heal() {
+        self.life += 40
     }
 }

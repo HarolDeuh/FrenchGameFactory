@@ -10,8 +10,6 @@ import Foundation
 
 class Bowman: Character {
     init() {
-        super.init(isType: .bowman,
-                   "Je suis un archer",
-                   Weapon("L'arc", Int.random(in: 70...90)))
+        super.init("Je suis un archer", Weapon("L'arc", Int.random(in: 70...90)))
     }
 }

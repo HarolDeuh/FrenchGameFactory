@@ -10,12 +10,8 @@ import Foundation
 
 class Knight: Character {
     init() {
-        super.init(isType: .knight,
-                   "Je suis un chevalier",
-                   Weapon("Excalibur", Int.random(in: 60...70)))
+        super.init("Je suis un chevalier", Weapon("Excalibur", Int.random(in: 60...70)))
     }
     
-    override func heal() {
-        self.life += 40
-    }
+    
 }
