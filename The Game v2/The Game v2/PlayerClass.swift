@@ -10,7 +10,9 @@ import Foundation
 class Player {
     var name: String?
     var team = [Character]()
+    private var chrNames: [String] = [""]
     
+    // Method to set players name
     func setName() {
         print("Comment est-ce que tu t'appelles ?")
         let thename = readLine()
@@ -18,14 +20,25 @@ class Player {
             print("il faut rentrer un nom")
             return
         }
+        
         self.name = thename
     }
     
+    // Method to set the character name
     func setCN(_ chr: Character) -> Character {
         print("Quel nom souhaites-tu me donner ?")
         
         if let chrName = readLine() {
-            chr.characterName = chrName
+            
+            if !nameAlreadyExist(chrName) {
+                chr.characterName = chrName
+            } else {
+                print("Tu as déjà un personnage qui porte le même nom, choisis en un autre")
+                if let secondname = readLine() {
+                    chr.characterName = secondname
+                }
+            }
+            
         } else {
             print("impossible de donner un nom")
         }
@@ -33,7 +46,43 @@ class Player {
         return chr
     }
     
+    
+    // MARK: Methods to create players's team
+    
+    func chrChoice() {
+    
+        guard let choice = readLine() else {
+            print("Ca ne fonctionne pas")
+            return
+        }
+        
+        switch choice {
+        case "1":
+            print("\(Knight().presentation) et nous vaincrons nos ennemis ensemble")
+            addChr(Knight())
+        case "2":
+            print("\(Bowman().presentation), allons ensemble vers la victoire")
+            addChr(Bowman())
+        case "3":
+            print("\(Wizard().presentation) et je suis fier d'intégrer ton équipe")
+            addChr(Wizard())
+        default:
+            print("Tu dois choisir un personnage")
+            print("(1) : Un chevalier, (2) : un archer, (3) : un magicien")
+            chrChoice()
+            
+        }
+        
+    }
+    
+    private func addChr(_ obj: Character) {
+        let chr = self.setCN(obj)
+        self.team.append(chr)
+    }
+    
+    
     func createTeam() {
+        
         guard self.name != nil else {
             print("Tu n'as pas de nom")
             return
@@ -42,11 +91,14 @@ class Player {
         print("\(self.name!) a ton tour ")
         print("Quel type de personnage souhaites-tu ajouter à ton équipe ?")
         
-        for _ in 1...1 {
+        for _ in 1...2 {
             print("(1) : Un chevalier, (2) : un archer, (3) : un magicien")
             self.chrChoice()
+            
         }
     }
+    
+    // MARK: Methods to manage game actions
     
     func isCaring() {
         print("Quel personnage souhaites-tu soigner ?")
@@ -62,13 +114,18 @@ class Player {
                 return
             }
             
+            elementAvailable(ccInt)
+            
             switch ccInt {
             case 1:
-                team[0].heal()
+                elementAvailable(1-1)
+                //team[0].heal()
             case 2:
-                team[1].heal()
+                elementAvailable(2-1)
+                //team[1].heal()
             case 3:
-                team[2].heal()
+                elementAvailable(3-1)
+                //team[2].heal()
             default:
                 print("tu n'as pas choisis de personnage")
             }
@@ -89,6 +146,11 @@ class Player {
                 return
             }
             
+            if !isAvailable(scInt) {
+                print("tu n'as pas selectionné de personnage, choisis-en un pour continuer")
+                
+            }
+            
             print("Choisis maintenant le personnage que tu souhaites attaquer")
             
             for (index, chrr) in who.team.enumerated() {
@@ -101,6 +163,7 @@ class Player {
                     print("bug")
                     return
                 }
+                
                 self.team[scInt - 1].strike(who.team[dcInt - 1])
                 
                 print("\(who.team[dcInt - 1].characterName!) a maintenant \(who.team[dcInt - 1].life) PV")
@@ -110,40 +173,42 @@ class Player {
                     who.team.remove(at: dcInt - 1)
                 }
             }
-            
         }
-    }
-    
-    
-    func chrChoice() {
-        guard let choice = readLine() else {
-            print("Ca ne fonctionne pas")
-            return
-        }
-        
-        switch choice {
-        case "1":
-            print("\(Knight().presentation) et nous vaincrons nos ennemis ensemble")
-            addChr(Knight())
-        case "2":
-            print("\(Bowman().presentation), allons ensemble vers la victoire")
-            addChr(Bowman())
-        case "3":
-            print("\(Wizard().presentation) et je suis fier d'intégrer ton équipe")
-            addChr(Wizard())
-        default:
-            print("ca ne marche pas")
-        }
-    }
-    
-    func addChr(_ obj: Character) {
-        let chr = self.setCN(obj)
-        self.team.append(chr)
     }
     
     
     func isDead() -> Bool {
         return self.team.count == 0
     }
+    
+    private func nameAlreadyExist(_ testedname: String) -> Bool {
+        var contains = false
+        
+        for name in chrNames {
+            contains = (name == testedname)
+        }
+        
+        chrNames.append(testedname)
+        
+        return contains
+    }
+    
+    private func elementAvailable(_ check: Int) {
+//        if team.count < check {
+//            print("tu n'as pas selectionné de personnage, choisis-en un pour continuer")
+//
+//        }
+        
+        
+        
+        
+    }
+    
+    private func isAvailable(_ check: Int) -> Bool {
+        return team.count >= check
+    }
      
 }
+
+
+

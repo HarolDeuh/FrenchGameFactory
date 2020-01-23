@@ -13,8 +13,13 @@ class Game {
     
     var playerOne: Player
     var playerTwo: Player
-    var nbrTour: Int = 0
+    var nbrRound: Int = 0
     var players: [Player]?
+    
+    // Constants to separate differents steps in the game
+    let separator = "------------------------------"
+    let separator2 = "=============================="
+    
 
     init(_ p1: Player, _ p2: Player) {
         self.playerOne = p1
@@ -37,17 +42,26 @@ class Game {
         }
         
         playerOne.createTeam()
+        print(separator)
         playerTwo.createTeam()
+        print(separator2)
     }
     
     
     func midGame() {
         while !playerOne.isDead() && !playerTwo.isDead() {
             self.gameRound()
+            nbrRound += 1
         }
     }
     
-    
+    func endGame() {
+        
+        print(separator2)
+        print("F I N   D E   P A R T I E")
+        print("Vous avez effectué \(nbrRound) tours dans cette partie ")
+        print(separator2)
+    }
     
     func gameRound() {
         
@@ -72,7 +86,7 @@ class Game {
         
     }
     
-    func toDo(_ att: Player, _ def: Player) {
+    private func toDo(_ att: Player, _ def: Player) {
         
         if att.team.isEmpty || def.team.isEmpty {
             print("Fin de partie")
@@ -92,6 +106,4 @@ class Game {
             }
         }
     }
-    
-    
 }

@@ -17,3 +17,4 @@ var newgame = Game(harold, senan)
 
 newgame.earlyGame()
 newgame.midGame()
+newgame.endGame()
