@@ -28,20 +28,23 @@ class Player {
     func setCN(_ chr: Character) -> Character {
         print("Quel nom souhaites-tu me donner ?")
         
-        if let chrName = readLine() {
-            
-            if !nameAlreadyExist(chrName) {
-                chr.characterName = chrName
-            } else {
-                print("Tu as déjà un personnage qui porte le même nom, choisis en un autre")
-                if let secondname = readLine() {
-                    chr.characterName = secondname
-                }
-            }
-            
-        } else {
-            print("impossible de donner un nom")
-        }
+//        if let chrName = readLine() {
+//
+//            if !nameAlreadyExist(chrName) {
+//                chr.characterName = chrName
+//            } else {
+//                print("Tu as déjà un personnage qui porte le même nom, choisis en un autre")
+//                if let secondname = readLine() {
+//                    chr.characterName = secondname
+//                }
+//            }
+//
+//        } else {
+//            print("impossible de donner un nom")
+//        }
+        
+        let chrName = Helper.waitForInputString()
+        chr.characterName = chrName
         
         return chr
     }
@@ -109,12 +112,11 @@ class Player {
         
         if let caringChoice = readLine() {
             
-            guard let ccInt = Int(caringChoice) else {
+            guard let ccInt = Int(caringChoice), isAvailable(ccInt) else {
                 print("bug")
                 return
             }
             
-            elementAvailable(ccInt)
             
             switch ccInt {
             case 1:
@@ -182,15 +184,18 @@ class Player {
     }
     
     private func nameAlreadyExist(_ testedname: String) -> Bool {
-        var contains = false
-        
-        for name in chrNames {
-            contains = (name == testedname)
+        return team.contains { character -> Bool in
+            return character.characterName == testedname
         }
-        
-        chrNames.append(testedname)
-        
-        return contains
+//        var contains = false
+//
+//        for name in chrNames {
+//            contains = (name == testedname)
+//        }
+//
+//        chrNames.append(testedname)
+//
+//        return contains
     }
     
     private func elementAvailable(_ check: Int) {
