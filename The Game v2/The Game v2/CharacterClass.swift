@@ -13,13 +13,14 @@ class Character {
         case wizard, knight, bowman
     }
     
-    var characterName: String?
+    var name: String?
     var life: Int = 100
-    var presentation: String
+    var intro: String
     var weapon: Weapon
+    var bonus: Int = 20
     
     init(_ pr: String = "Je suis un personnage", _ wp: Weapon) {
-        presentation = pr
+        intro = pr
         weapon = wp
     }
     
@@ -28,6 +29,11 @@ class Character {
     }
     
     func heal() {
-        self.life += 20
+        self.life += bonus
+        print("\(self.name?.capitalized ?? "Le personnage") Ma vie augmente de \(bonus) points, j'ai maintenant \(self.life) PV ")
+    }
+    
+    func changeWeapon() {
+        weapon = weapon.masterWeapon()
     }
 }

@@ -9,11 +9,19 @@
 import Foundation
 
 class Weapon {
-    var weaponName: String
+    var name: String
     var damage: Int
     
     init (_ wn: String, _ dmg: Int ) {
-        weaponName = wn
+        name = wn
         damage = dmg
     }
+    
+    func masterWeapon() -> Weapon {
+        let masterWeapon = Weapon("Super arme", Int.random(in: 70...150))
+        return masterWeapon
+    }
+    
+    
+    
 }

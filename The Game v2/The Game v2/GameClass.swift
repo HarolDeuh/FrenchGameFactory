@@ -16,9 +16,8 @@ class Game {
     var nbrRound: Int = 0
     var players: [Player]?
     
-    // Constants to separate differents steps in the game
-    let separator = "------------------------------"
-    let separator2 = "=============================="
+    
+    
     
 
     init(_ p1: Player, _ p2: Player) {
@@ -29,22 +28,23 @@ class Game {
     func earlyGame() {
         
         print("Joueur 1 c'est a toi")
-        playerOne.setName()
+        playerOne.setPlayerName()
         print("Joueur 2 a ton tour")
-        playerTwo.setName()
+        playerTwo.setPlayerName()
         
         if playerOne.name == playerTwo.name {
             print("vous avez le meme nom")
             repeat {
                 print("Joueur 2 tu dois changer ton nom")
-                playerTwo.setName()
+                playerTwo.setPlayerName()
             } while playerTwo.name == playerOne.name
         }
         
         playerOne.createTeam()
-        print(separator)
+        print(Helper.separator)
+        
         playerTwo.createTeam()
-        print(separator2)
+        print(Helper.separator2)
     }
     
     
@@ -57,13 +57,20 @@ class Game {
     
     func endGame() {
         
-        print(separator2)
+        print(Helper.separator2)
         print("F I N   D E   P A R T I E")
         print("Vous avez effectué \(nbrRound) tours dans cette partie ")
-        print(separator2)
+        print(Helper.separator2)
     }
     
     func gameRound() {
+        
+        var nbrRandom = Int.random(in: 1...10)
+        
+        if nbrRandom == 7 {
+            safeBox(p1: playerOne, p2: playerTwo)
+            nbrRandom = Int.random(in: 1...15)
+        }
         
         guard !playerOne.isDead() else {
             print("Tu t'es bien battu joueur 1")
@@ -94,7 +101,7 @@ class Game {
         
         
         print("\(att.name!), que souhaites-tu faire ?")
-        print("(1) Soigner un membre de ton équipe, ou alors (2) attaquer un pokémon de ton adversaire ?")
+        print("(1) Soigner un membre de ton équipe, ou alors (2) attaquer un personnage de ton adversaire ?")
         if let choix = readLine() {
             switch choix {
             case "1":
@@ -105,5 +112,13 @@ class Game {
                 print("blo")
             }
         }
+    }
+    
+    func safeBox(p1: Player, p2: Player) {
+        let playersArray = [p1, p2].shuffled()
+        let selectedPlayer = playersArray[0]
+        let selectedCharacter = Int.random(in: 0...selectedPlayer.team.count)
+        
+        selectedPlayer.getNewWeapon(for: selectedPlayer.team[selectedCharacter])
     }
 }

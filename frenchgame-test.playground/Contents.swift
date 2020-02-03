@@ -87,22 +87,89 @@ class Bowman: Character {
 
 var harry = Wizard()
 
-print(harry.weapon.weaponName)
-print(harry.weapon.damage)
+
 
 var link = Knight()
 
-print(link.weapon.weaponName)
-print(link.weapon.damage)
+
 
 
 var legolas = Bowman()
 
-print(legolas.weapon.weaponName)
-print(legolas.weapon.damage)
+
+
+var arrayTest = ["toto", "tata", "titi"]
+
+//arrayTest.contains("tata")
+
+
+ func checkArray(_ testedName: String) -> Bool {
+    var contains = false
+    
+    for name in arrayTest {
+        contains = (name == testedName)
+    }
+    
+    //arrayTest.append(testedName)
+    
+    return contains
+}
+
+
+func nameAvailable(_ name:String) {
+    
+    if !checkTheArray(for: name) {
+        print("c'est yes")
+    } else {
+        print("c'est non")
+        print("il faut changer de nom")
+        changeChrName()
+    }
+    
+}
+
+func checkTheArray(for name: String) -> Bool {
+    return arrayTest.contains { character -> Bool in
+        return character == name
+    }
+}
+
+func changeChrName() {
+    var i = 0
+    repeat {
+        print("on attend !")
+        i += 1
+        
+    } while i == 2
+}
 
 
 
 
 
+var maVar = "toto"
+var maVarDeux = "pupu"
+
+var aragorn = Knight()
+
+aragorn.characterName = "Aragorn"
+
+
+func safebox(who: Character) {
+    let newWeapon = Weapon("Arme en or", 100)
+    
+    who.weapon = newWeapon
+}
+
+func coffreFort() -> Weapon {
+    let masterWeapon = Weapon("Arme en or", Int.random(in: 50...150))
+    return masterWeapon
+}
+
+print("avant : \(aragorn.weapon.weaponName)")
+
+aragorn.weapon = coffreFort()
+
+print("apres : \(aragorn.weapon.weaponName)")
+print(aragorn.weapon.damage)
 

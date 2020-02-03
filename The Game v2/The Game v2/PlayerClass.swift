@@ -10,65 +10,44 @@ import Foundation
 class Player {
     var name: String?
     var team = [Character]()
-    private var chrNames: [String] = [""]
     
     // Method to set players name
-    func setName() {
+    
+    func setPlayerName() {
         print("Comment est-ce que tu t'appelles ?")
-        let thename = readLine()
-        guard let name = thename, !name.isEmpty else {
-            print("il faut rentrer un nom")
-            return
-        }
         
+        let thename = Helper.waitForInputString()
         self.name = thename
     }
     
     // Method to set the character name
-    func setCN(_ chr: Character) -> Character {
+    
+    func setCharacterName(_ character: Character) -> Character {
         print("Quel nom souhaites-tu me donner ?")
         
-//        if let chrName = readLine() {
-//
-//            if !nameAlreadyExist(chrName) {
-//                chr.characterName = chrName
-//            } else {
-//                print("Tu as déjà un personnage qui porte le même nom, choisis en un autre")
-//                if let secondname = readLine() {
-//                    chr.characterName = secondname
-//                }
-//            }
-//
-//        } else {
-//            print("impossible de donner un nom")
-//        }
+        let chrName = changeChrName()
+        character.name = chrName
         
-        let chrName = Helper.waitForInputString()
-        chr.characterName = chrName
-        
-        return chr
+        return character
     }
-    
+
     
     // MARK: Methods to create players's team
     
     func chrChoice() {
-    
-        guard let choice = readLine() else {
-            print("Ca ne fonctionne pas")
-            return
-        }
+        
+        let choice = Helper.waitForInputString()
         
         switch choice {
         case "1":
-            print("\(Knight().presentation) et nous vaincrons nos ennemis ensemble")
-            addChr(Knight())
+            print("\(Knight().intro) et nous vaincrons nos ennemis ensemble")
+            addCharacterToTeam(Knight())
         case "2":
-            print("\(Bowman().presentation), allons ensemble vers la victoire")
-            addChr(Bowman())
+            print("\(Bowman().intro), allons ensemble vers la victoire")
+            addCharacterToTeam(Bowman())
         case "3":
-            print("\(Wizard().presentation) et je suis fier d'intégrer ton équipe")
-            addChr(Wizard())
+            print("\(Wizard().intro) et je suis fier d'intégrer ton équipe")
+            addCharacterToTeam(Wizard())
         default:
             print("Tu dois choisir un personnage")
             print("(1) : Un chevalier, (2) : un archer, (3) : un magicien")
@@ -78,8 +57,8 @@ class Player {
         
     }
     
-    private func addChr(_ obj: Character) {
-        let chr = self.setCN(obj)
+    private func addCharacterToTeam(_ character: Character) {
+        let chr = self.setCharacterName(character)
         self.team.append(chr)
     }
     
@@ -107,38 +86,34 @@ class Player {
         print("Quel personnage souhaites-tu soigner ?")
         
         for (index, chr) in team.enumerated()  {
-            print("\(index + 1) \(chr.characterName!): \(chr.life) PV")
+            print("\(index + 1) \(chr.name!): \(chr.life) PV")
         }
         
-        if let caringChoice = readLine() {
-            
-            guard let ccInt = Int(caringChoice), isAvailable(ccInt) else {
-                print("bug")
-                return
-            }
-            
-            
-            switch ccInt {
-            case 1:
-                elementAvailable(1-1)
-                //team[0].heal()
-            case 2:
-                elementAvailable(2-1)
-                //team[1].heal()
-            case 3:
-                elementAvailable(3-1)
-                //team[2].heal()
-            default:
-                print("tu n'as pas choisis de personnage")
-            }
+        let caringChoice = Helper.waitForInputString()
+        
+        guard let ccInt = Int(caringChoice), isAvailable(ccInt) else {
+            print("bug")
+            return
         }
+        
+        switch ccInt {
+        case 1:
+            team[0].heal()
+        case 2:
+            team[1].heal()
+        case 3:
+            team[2].heal()
+        default:
+            print("tu n'as pas choisis de personnage")
+        }
+        
     }
     
     func isStriking(_ who: Player) {
         print("Quel personnage souhaites-tu utliser pour ton attaque ?")
         
         for (index, chr) in self.team.enumerated() {
-            print("\(index + 1) \(chr.characterName!) armé de \(chr.weapon.weaponName) (\(chr.weapon.damage) ATT) ")
+            print("\(index + 1) \(chr.name!) armé de \(chr.weapon.name) (\(chr.weapon.damage) ATT) ")
         }
         
         if let strikerChoice = readLine() {
@@ -156,7 +131,7 @@ class Player {
             print("Choisis maintenant le personnage que tu souhaites attaquer")
             
             for (index, chrr) in who.team.enumerated() {
-                print("\(index + 1) \(chrr.characterName!), \(chrr.life) PV")
+                print("\(index + 1) \(chrr.name!), \(chrr.life) PV")
             }
             
             if let defenderChoice = readLine() {
@@ -168,7 +143,7 @@ class Player {
                 
                 self.team[scInt - 1].strike(who.team[dcInt - 1])
                 
-                print("\(who.team[dcInt - 1].characterName!) a maintenant \(who.team[dcInt - 1].life) PV")
+                print("\(who.team[dcInt - 1].name!) a maintenant \(who.team[dcInt - 1].life) PV")
                 
                 if who.team[dcInt - 1].life <= 0 {
                     print("Ton personnage est mort")
@@ -183,36 +158,35 @@ class Player {
         return self.team.count == 0
     }
     
-    private func nameAlreadyExist(_ testedname: String) -> Bool {
-        return team.contains { character -> Bool in
-            return character.characterName == testedname
-        }
-//        var contains = false
-//
-//        for name in chrNames {
-//            contains = (name == testedname)
-//        }
-//
-//        chrNames.append(testedname)
-//
-//        return contains
-    }
-    
-    private func elementAvailable(_ check: Int) {
-//        if team.count < check {
-//            print("tu n'as pas selectionné de personnage, choisis-en un pour continuer")
-//
-//        }
-        
-        
-        
-        
-    }
-    
     private func isAvailable(_ check: Int) -> Bool {
         return team.count >= check
     }
-     
+    
+    func changeChrName() -> String {
+        var newName = ""
+        repeat {
+            newName = Helper.waitForInputString()
+        } while checkArray(for: newName)
+        
+        Helper.stringArray.append(newName)
+        
+        return newName
+    }
+    
+    func checkArray(for name: String) -> Bool {
+        return Helper.stringArray.contains { character -> Bool in
+            return character == name
+        }
+    }
+    
+    func getNewWeapon(for who: Character) {
+        if who.name != nil {
+            print("Tu as de la chance, \(who.name!) a trouvé un coffre avec une nouvelle arme")
+        }
+        who.changeWeapon()
+        print("Cette arme possede \(who.weapon.damage) point d'attaque")
+    }
+    
 }
 
 
