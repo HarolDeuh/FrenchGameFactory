@@ -30,7 +30,7 @@ class Character {
     
     func heal() {
         self.life += bonus
-        print("\(self.name?.capitalized ?? "Le personnage") Ma vie augmente de \(bonus) points, j'ai maintenant \(self.life) PV ")
+        print("\(self.name?.capitalized ?? "Le personnage") : Ma vie augmente de \(bonus) points, j'ai maintenant \(self.life) PV ")
     }
     
     func changeWeapon() {
